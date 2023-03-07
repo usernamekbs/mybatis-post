@@ -9,9 +9,17 @@
 		VALUES(#{title}, #{content}, #{writer})
 	</insert>
 	
-	<select id="list"  resultType="ArticleVO">
-		SELECT ano,title,content,writer,(select count(*) from article) as cnt
-		FROM Article
+	<select id="list"  resultType="ArticleVO" parameterType="ArticleVO">
+		SELECT ano,title,content,writer,(select count(*) from article WHERE 1=1 
+		<if test="srch_title != null and srch_title != ''">
+			AND   TITLE LIKE '%' || #{srch_title} || '%'
+		</if> 
+		) as cnt
+		FROM Article 
+		WHERE 1=1
+			<if test="srch_title != null and srch_title != ''">
+	        	AND   TITLE LIKE '%' || #{srch_title} || '%'
+	      	</if> 
 		ORDER BY ano DESC
 	</select>
 	

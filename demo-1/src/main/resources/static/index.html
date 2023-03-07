@@ -31,13 +31,17 @@
 <div id='list'>
 
 </div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" id="srch_title" placeholder="제목을 입력해주세요" aria-label="제목을 입력해주세요" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="listPost()">검색</button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">모달 제목</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">수정</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -95,15 +99,23 @@ function savePost(){
 }
 
 function listPost(){
+	var srch_title = $("#srch_title").val()
+	console.log(srch_title)
 	$.ajax({
 	    type : 'get',          
-	    url : '/list',         
+	    url : '/list',    
+	    data : { 
+		      "srch_title" : srch_title
+	    },
 	    success : function(result) {  
 				var html="";
-				console.log(result)
-				html+= "<p><span>게시글 개수:</span>"+result[0].cnt+"</p>"
+				if(result.length > 0){
+					html+= "<p><span>게시글 개수:</span>"+result[0].cnt+"</p>"
+				}else{
+					html+="<p>데이터가 없습니다.</p>"
+				}
 				html+=	"<table class='table'>";
-				html+=	"<thead>"
+				html+=	"<thead>" 
 				html+=	    "<tr>"
 				html+=	      "<th scope='col'>Ano</th>"
 				html+=	      "<th scope='col'>Title</th>"

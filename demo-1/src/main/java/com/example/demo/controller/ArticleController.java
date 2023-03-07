@@ -30,9 +30,8 @@ public class ArticleController {
 	 
 	@ResponseBody
 	@GetMapping("/list") 
-	public List<ArticleVO> list() {
-		
-		return service.listArticle();
+	public List<ArticleVO> list(ArticleVO vo) {
+		return service.listArticle(vo.getSrch_title());
 		
 	}
 	
@@ -49,8 +48,6 @@ public class ArticleController {
 	
 	@PostMapping("/update") 
 	public void update(ArticleVO vo) {
-		if(vo.getAno()!=0) {
-			service.updateArticle(vo);
-		}
+		service.updateArticle(vo);
 	}
 }

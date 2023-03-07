@@ -11,7 +11,7 @@ public interface  ArticleDao {
 	
 	void insert(ArticleVO article);
 
-	List<ArticleVO> list();
+	List<ArticleVO> list(String srch_title);
 
 	void delete(int ano);
 

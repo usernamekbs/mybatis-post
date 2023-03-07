@@ -11,7 +11,14 @@ public class ArticleVO {
 	private String writer;
 	private String message;
 	private int cnt;
+	private String srch_title;
 	
+	public String getSrch_title() {
+		return srch_title;
+	}
+	public void setSrch_title(String srch_title) {
+		this.srch_title = srch_title;
+	}
 	public int getCnt() {
 		return cnt;
 	}

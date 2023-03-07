@@ -21,8 +21,8 @@ public class ArticleServiceImpl implements ArticleService{
 
 
 	@Override
-	public List<ArticleVO> listArticle() {
-		return dao.list();
+	public List<ArticleVO> listArticle(String srch_title) {
+		return dao.list(srch_title);
 	}
 
 
@@ -35,7 +35,6 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Override
 	public void updateArticle(ArticleVO vo) {
-		System.out.println(vo.getAno());
 		dao.update(vo);
 		
 	}
@@ -43,7 +42,6 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Override
 	public ArticleVO detailArticle(ArticleVO vo,int ano) {
-		System.out.println(vo.getAno());
 		return dao.detail(vo,ano);
 	}
 

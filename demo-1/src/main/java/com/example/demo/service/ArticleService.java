@@ -8,7 +8,7 @@ public interface  ArticleService {
 
 	void insertArticle(ArticleVO vo);
 
-	List<ArticleVO> listArticle();
+	List<ArticleVO> listArticle(String srch_title);
 
 	void deleteArticle(int ano);
 
