@@ -92,7 +92,7 @@ function savePost(){
 		    	 $("#content").val('')
 		    	 $("#writer").val('')
 		    },
-		    error : function(request, status, error) { // 결과 에러 콜백함수
+		    error : function(request, status, error) {
 		        console.log(error)
 		    }
 		})
@@ -145,7 +145,7 @@ function listPost(){
 			
 		  	$("#list").html(html);
 	    },
-	    error : function(request, status, error) { // 결과 에러 콜백함수
+	    error : function(request, status, error) { 
 	        console.log(error)
 	    }
 	})
@@ -154,17 +154,17 @@ function listPost(){
 function deletePost(ano){
 	
 	$.ajax({
-	    type : 'delete',           // 타입 (get, post, put 등등)
-	    url : '/delete',           // 요청할 서버url
-	    dataType : 'text',       // 데이터 타입 (html, xml, json, text 등등)
-	    data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
+	    type : 'delete',           
+	    url : '/delete',           
+	    dataType : 'text',      
+	    data : JSON.stringify({  
 	      "ano" : ano
 	    }),
 	    contentType: 'application/json',
-	    success : function(result) { // 
+	    success : function(result) {  
 	    	listPost()
 	    },
-	    error : function(request, status, error) { // 결과 에러 콜백함수
+	    error : function(request, status, error) {
 	        console.log(error)
 	    }
 	}) 
@@ -187,7 +187,7 @@ function detailPost(ano){
 	    	html+= "<p><span>작성자 : </span>"+result.writer+"</p>"
 	     	$("#detail").html(html);
 	    },
-	    error : function(request, status, error) { // 결과 에러 콜백함수
+	    error : function(request, status, error) { 
 	        console.log(error)
 	    }
 	})
@@ -219,7 +219,7 @@ function updatePost(ano){
 		    	$("#staticBackdrop").modal("hide");
 		    	 listPost()
 		    },
-		    error : function(request, status, error) { // 결과 에러 콜백함수
+		    error : function(request, status, error) { 
 		        console.log(error)
 		    }
 		})
