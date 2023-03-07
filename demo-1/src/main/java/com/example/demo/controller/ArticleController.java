@@ -49,8 +49,8 @@ public class ArticleController {
 	
 	@PostMapping("/update") 
 	public void update(ArticleVO vo) {
-		if(vo.getAno()!=0) {
-			service.updateArticle(vo);
-		}
+		
+		service.updateArticle(vo);
+		
 	}
 }
