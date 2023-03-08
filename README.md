@@ -11,4 +11,4 @@ spring boot,mybatis,postgresql,jquery,ajax,bootstrap을 이용해서 간단하�
 기간 20230306~20230308
 게시글 추가시 concat을 이용해야 했지만 listPost함수를 조회하였습니다.
 
-20230307 게시판 제목 검색 추가 
+20230308 게시판 제목 검색 추가 뷰모달추가
