@@ -9,31 +9,27 @@
 </head>
 <body style="background-color:yellow">
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">ì œëª©</span>
-  <input type="text" class="form-control" id="title" placeholder="ì œëª©" aria-label="Username" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="basic-addon1">Á¦¸ñ</span>
+  <input type="text" class="form-control" id="title" placeholder="Á¦¸ñ" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">ë‚´ìš©</span>
-  <input type="text" class="form-control" id="content" placeholder="ë‚´ìš©" aria-label="Username" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="basic-addon1">³»¿ë</span>
+  <input type="text" class="form-control" id="content" placeholder="³»¿ë" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">ì‘ì„±ì</span>
-  <input type="text" class="form-control"   id="writer" placeholder="ì‘ì„±ì" aria-label="Username" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="basic-addon1">ÀÛ¼ºÀÚ</span>
+  <input type="text" class="form-control"   id="writer" placeholder="ÀÛ¼ºÀÚ" aria-label="Username" aria-describedby="basic-addon1">
 </div>
-<button type="button" class="btn btn-info"  onClick="savePost()" >ì €ì¥</button>
+<button type="button" class="btn btn-info"  onClick="savePost()" >ÀúÀå</button>
 
-<button type="button" class="btn btn-success"  onClick="listPost()">ì¡°íšŒ</button>
-
-<div id="detail">
-
-</div>
+<button type="button" class="btn btn-success"  onClick="listPost()">Á¶È¸</button>
 
 <div id='list'>
 
 </div>
 <div class="input-group mb-3">
-  <input type="text" class="form-control" id="srch_title" placeholder="ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" aria-label="ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="listPost()">ê²€ìƒ‰</button>
+  <input type="text" class="form-control" id="srch_title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" aria-label="Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="listPost()">°Ë»ö</button>
 </div>
 
 <!-- Modal -->
@@ -41,35 +37,54 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">ìˆ˜ì •</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">¼öÁ¤</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
      	<div class="input-group mb-3">
-	  <span class="input-group-text" id="basic-addon1">ë²ˆí˜¸</span>
+	  <span class="input-group-text" id="basic-addon1">¹øÈ£</span>
 	  <input type="text" class="form-control" id="upd_ano" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group mb-3">
-	  <span class="input-group-text" id="basic-addon1">ì œëª©</span>
+	  <span class="input-group-text" id="basic-addon1">Á¦¸ñ</span>
 	  <input type="text" class="form-control" id="upd_title"  aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group mb-3">
-	  <span class="input-group-text" id="basic-addon1">ë‚´ìš©</span>
+	  <span class="input-group-text" id="basic-addon1">³»¿ë</span>
 	  <input type="text" class="form-control" id="upd_content"  aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group mb-3">
-	  <span class="input-group-text" id="basic-addon1">ì‘ì„±ì</span>
+	  <span class="input-group-text" id="basic-addon1">ÀÛ¼ºÀÚ</span>
 	  <input type="text" class="form-control"   id="upd_writer" aria-describedby="basic-addon1">
 	</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ë‹«ê¸°</button>
-        <button type="button" class="btn btn-primary" id="change" >í™•ì¸</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">´İ±â</button>
+        <button type="button" class="btn btn-primary" id="change" >È®ÀÎ</button>
       </div>
     </div>
   </div>
 </div>
   
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">»ó¼¼º¸±â</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+   		<div class="input-group mb-3" id="detail">
+			
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">´İ±â</button>
+      </div>
+    </div>
+  </div>
+</div>  
+</div>
 <script>
 function savePost(){
 		var title  = $("#title").val();
@@ -92,7 +107,7 @@ function savePost(){
 		    	 $("#content").val('')
 		    	 $("#writer").val('')
 		    },
-		    error : function(request, status, error) {
+		    error : function(request, status, error) { // °á°ú ¿¡·¯ Äİ¹éÇÔ¼ö
 		        console.log(error)
 		    }
 		})
@@ -100,7 +115,7 @@ function savePost(){
 
 function listPost(){
 	var srch_title = $("#srch_title").val()
-	
+	console.log(srch_title)
 	$.ajax({
 	    type : 'get',          
 	    url : '/list',    
@@ -110,9 +125,9 @@ function listPost(){
 	    success : function(result) {  
 				var html="";
 				if(result.length > 0){
-					html+= "<p><span>ê²Œì‹œê¸€ ê°œìˆ˜:</span>"+result[0].cnt+"</p>"
+					html+= "<p style='color:#FF6666'><span>°Ô½Ã±Û °³¼ö:</span>"+result[0].cnt+"</p>"
 				}else{
-					html+="<p>ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.</p>"
+					html+="<p>µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.</p>"
 				}
 				html+=	"<table class='table'>";
 				html+=	"<thead>" 
@@ -121,9 +136,9 @@ function listPost(){
 				html+=	      "<th scope='col'>Title</th>"
 				html+=	      "<th scope='col'>Content</th>"
 				html+=	      "<th scope='col'>Writer</th>"
-				html+=	      "<th scope='col'>ì‚­ì œ</th>"
-				html+=	      "<th scope='col'>ìˆ˜ì •</th>"
-				html+=	      "<th scope='col'>ë³´ê¸°</th>"
+				html+=	      "<th scope='col'>»èÁ¦</th>"
+				html+=	      "<th scope='col'>¼öÁ¤</th>"
+				html+=	      "<th scope='col'>º¸±â</th>"
 				html+=	    "</tr>"
 				html+=	"</thead>" 
 				html+=	"<tbody>" 
@@ -133,9 +148,9 @@ function listPost(){
 			 	html+=      	"<td>"+result[i].title+"</td>"
 				html+=      	"<td>"+result[i].content+"</td>"  
 				html+=      	"<td>"+result[i].writer+"</td>"  
-				html+=      	"<td><button class='btn btn-warning' onclick=deletePost('"+result[i].ano+"')>ì‚­ì œ</button></td>" 
-				html+=          "<td><button type='button' class='btn btn-primary' id='openModalBtn' onclick='updateDetailPost(" +result[i].ano + "," + "\""+result[i].title+ "\""+ "," + "\""+result[i].content+ "\"" + "," + "\""+result[i].writer+ "\"" + ");'>ìˆ˜ì •</button></td>" 
-				html+=      	"<td><button class='btn btn-success' onclick=detailPost('"+result[i].ano+"')>ë³´ê¸°</button></td>" 
+				html+=      	"<td><button class='btn btn-warning' onclick=deletePost('"+result[i].ano+"')>»èÁ¦</button></td>" 
+				html+=          "<td><button type='button' class='btn btn-primary' id='openModalBtn' onclick='updateDetailPost(" +result[i].ano + "," + "\""+result[i].title+ "\""+ "," + "\""+result[i].content+ "\"" + "," + "\""+result[i].writer+ "\"" + ");'>¼öÁ¤</button></td>" 
+				html+=      	"<td><button class='btn btn-success' onclick=detailPost('"+result[i].ano+"')>º¸±â</button></td>" 
 				html+=		"</tr>"  
 				
 				}
@@ -145,7 +160,7 @@ function listPost(){
 			
 		  	$("#list").html(html);
 	    },
-	    error : function(request, status, error) { 
+	    error : function(request, status, error) { // °á°ú ¿¡·¯ Äİ¹éÇÔ¼ö
 	        console.log(error)
 	    }
 	})
@@ -154,17 +169,17 @@ function listPost(){
 function deletePost(ano){
 	
 	$.ajax({
-	    type : 'delete',           
-	    url : '/delete',           
-	    dataType : 'text',      
-	    data : JSON.stringify({  
+	    type : 'delete',           // Å¸ÀÔ (get, post, put µîµî)
+	    url : '/delete',           // ¿äÃ»ÇÒ ¼­¹öurl
+	    dataType : 'text',       // µ¥ÀÌÅÍ Å¸ÀÔ (html, xml, json, text µîµî)
+	    data : JSON.stringify({  // º¸³¾ µ¥ÀÌÅÍ (Object , String, Array)
 	      "ano" : ano
 	    }),
 	    contentType: 'application/json',
-	    success : function(result) {  
+	    success : function(result) { // 
 	    	listPost()
 	    },
-	    error : function(request, status, error) {
+	    error : function(request, status, error) { // °á°ú ¿¡·¯ Äİ¹éÇÔ¼ö
 	        console.log(error)
 	    }
 	}) 
@@ -180,14 +195,14 @@ function detailPost(ano){
 	    },
 	    success : function(result) {  
 	    	var html="";
-	    	
-	    	html+= "<p><span>ë²ˆí˜¸ : </span>"+result.ano+"</p>"
-	    	html+= "<p><span>ì œëª© : </span>"+result.title+"</p>"
-	    	html+= "<p><span>ë‚´ìš© : </span>"+result.content+"</p>"
-	    	html+= "<p><span>ì‘ì„±ì : </span>"+result.writer+"</p>"
+	    	$("#staticBackdrop2").modal("show")
+	    	html+= "<p ><span>¹øÈ£ : </span>"+result.ano+"</p>"
+	    	html+= "<p ><span>Á¦¸ñ : </span>"+result.title+"</p>"
+	    	html+= "<p><span>³»¿ë : </span>"+result.content+"</p>"
+	    	html+= "<p><span>ÀÛ¼ºÀÚ : </span>"+result.writer+"</p>"
 	     	$("#detail").html(html);
 	    },
-	    error : function(request, status, error) { 
+	    error : function(request, status, error) { // °á°ú ¿¡·¯ Äİ¹éÇÔ¼ö
 	        console.log(error)
 	    }
 	})
@@ -219,7 +234,7 @@ function updatePost(ano){
 		    	$("#staticBackdrop").modal("hide");
 		    	 listPost()
 		    },
-		    error : function(request, status, error) { 
+		    error : function(request, status, error) { // °á°ú ¿¡·¯ Äİ¹éÇÔ¼ö
 		        console.log(error)
 		    }
 		})

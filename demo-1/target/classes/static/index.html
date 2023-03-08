@@ -24,10 +24,6 @@
 
 <button type="button" class="btn btn-success"  onClick="listPost()">조회</button>
 
-<div id="detail">
-
-</div>
-
 <div id='list'>
 
 </div>
@@ -70,6 +66,25 @@
   </div>
 </div>
   
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">상세보기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+   		<div class="input-group mb-3" id="detail">
+			
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>  
+</div>
 <script>
 function savePost(){
 		var title  = $("#title").val();
@@ -110,7 +125,7 @@ function listPost(){
 	    success : function(result) {  
 				var html="";
 				if(result.length > 0){
-					html+= "<p><span>게시글 개수:</span>"+result[0].cnt+"</p>"
+					html+= "<p style='color:#FF6666'><span>게시글 개수:</span>"+result[0].cnt+"</p>"
 				}else{
 					html+="<p>데이터가 없습니다.</p>"
 				}
@@ -180,9 +195,9 @@ function detailPost(ano){
 	    },
 	    success : function(result) {  
 	    	var html="";
-	    	
-	    	html+= "<p><span>번호 : </span>"+result.ano+"</p>"
-	    	html+= "<p><span>제목 : </span>"+result.title+"</p>"
+	    	$("#staticBackdrop2").modal("show")
+	    	html+= "<p ><span>번호 : </span>"+result.ano+"</p>"
+	    	html+= "<p ><span>제목 : </span>"+result.title+"</p>"
 	    	html+= "<p><span>내용 : </span>"+result.content+"</p>"
 	    	html+= "<p><span>작성자 : </span>"+result.writer+"</p>"
 	     	$("#detail").html(html);
