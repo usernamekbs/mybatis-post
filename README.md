@@ -1,9 +1,8 @@
-![1](https://user-images.githubusercontent.com/126663518/223589330-afeb3664-2bd3-49bb-89e6-43f7700530d2.PNG)
-![2](https://user-images.githubusercontent.com/126663518/223589340-24213bc7-a037-4db9-8c86-fc90e599ee57.PNG)
-![6](https://user-images.githubusercontent.com/126663518/223589601-4b124129-361c-4248-9b27-c89da3962b3b.PNG)
-![4](https://user-images.githubusercontent.com/126663518/223589346-f45e7faa-00f2-4f82-aae0-3dd4fb640c16.PNG)![5](https://user-images.githubusercontent.com/126663518/223589351-092585f2-c219-4366-b045-fb5badef7293.PNG)
-
-
+![1](https://user-images.githubusercontent.com/126663518/223589694-ccde0a96-8262-4b92-a888-2fe1ffa48725.PNG)
+![2](https://user-images.githubusercontent.com/126663518/223589700-9a15a46d-9b61-4485-a7f6-acf8833c61fa.PNG)
+![4](https://user-images.githubusercontent.com/126663518/223589720-84e6fdd4-6ec9-450e-95a9-e24a825185dd.PNG)
+![5](https://user-images.githubusercontent.com/126663518/223589735-6e80abb3-6041-42eb-a275-45bee8cb2166.PNG)
+![6](https://user-images.githubusercontent.com/126663518/223589742-a891b033-7670-401b-8968-e550b6240990.PNG)
 
 ajax CRUD입니다.
 
