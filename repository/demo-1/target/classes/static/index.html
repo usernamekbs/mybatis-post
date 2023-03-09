@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"></head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+ <meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body style="background-color:yellow">
+<div id="list_group">
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">제목</span>
+  <input type="text" class="form-control" id="title" placeholder="제목" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">내용</span>
+  <input type="text" class="form-control" id="content" placeholder="내용" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">작성자</span>
+  <input type="text" class="form-control"   id="writer" placeholder="작성자" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+</div>
+<button type="button" class="btn btn-info"  onClick="savePost()" >저장</button>
+
+<button type="button" class="btn btn-success"  onClick="listPost()">조회</button>
+
+<div id='list'>
+
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" id="srch_title" placeholder="제목을 입력해주세요" aria-label="제목을 입력해주세요" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="listPost()">검색</button>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">수정</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">번호</span>
+	  <input type="text" class="form-control" id="upd_ano" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">제목</span>
+	  <input type="text" class="form-control" id="upd_title"  aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">내용</span>
+	  <input type="text" class="form-control" id="upd_content"  aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">작성자</span>
+	  <input type="text" class="form-control"   id="upd_writer" aria-describedby="basic-addon1">
+	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="change" >확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">상세보기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+   		<div class="input-group mb-3" id="detail">
+			
+      	</div>
+      	<div class="input-group mb-3" id="commentList">
+      	
+      	</div>
+		<div class="input-group mb-3">
+		  <span class="input-group-text" id="basic-addon1">내용</span>
+		  <input type="text" class="form-control" id="comment_content" placeholder="내용" aria-describedby="basic-addon1">
+		</div>
+		      	
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-info"  onClick="saveComment()" >저장</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<div class="modal fade" id="commentStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">수정</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="input-group mb-3">
+	  <input type="hidden" class="form-control" id="comment_upd_ano"  aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <input type="hidden" class="form-control"   id="comment_upd_cno" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">내용</span>
+	  <input type="text" class="form-control" id="comment_upd_content"  aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group mb-3">
+	  <span class="input-group-text" id="basic-addon1">작성자</span>
+	  <input type="text" class="form-control"   id="comment_upd_writer" aria-describedby="basic-addon1">
+	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="comment_change" >확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+var gbl_ano;
+function savePost(){
+		var title  = $("#title").val();
+		var content  = $("#content").val();
+		var writer  = $("#writer").val();
+		
+		$.ajax({
+		    type : 'post',           
+		    url : '/create',           
+		    dataType : 'text',       
+		    data : JSON.stringify({  
+		      "title" : title,
+		      "content" : content,
+		      "writer" : writer
+		    }),
+		    contentType: 'application/json',
+		    success : function(result) { 
+		    	 listPost()
+		    	 $("#title").val('')
+		    	 $("#content").val('')
+		    	 $("#writer").val('')
+		    },
+		    error : function(request, status, error) { 
+		        console.log(error)
+		    }
+		})
+}
+
+function listPost(){
+	var srch_title = $("#srch_title").val()
+	console.log(srch_title)
+	$.ajax({
+	    type : 'get',          
+	    url : '/list',    
+	    data : { 
+		      "srch_title" : srch_title
+	    },
+	    success : function(result) {  
+				var html="";
+				
+				if(result.length > 0){
+				html+=	"<table class='table'>";
+				html+=	"<thead>" 
+				html+=	    "<tr>"
+				html+=	      "<th scope='col'>Ano</th>"
+				html+=	      "<th scope='col'>Title</th>"
+				html+=	      "<th scope='col'>Content</th>"
+				html+=	      "<th scope='col'>Writer</th>"
+				html+=	      "<th scope='col'>삭제</th>"
+				html+=	      "<th scope='col'>수정</th>"
+				html+=	      "<th scope='col'>보기</th>"
+				html+=	    "</tr>"
+				html+=	"</thead>" 
+				html+=	"<tbody>" 
+				html+=		"<tr>" 
+				for(var i=1 in result){  
+				html+=	 		"<th scope='row'>"+result[i].ano+"</th>"
+			 	html+=      	"<td>"+result[i].title+"</td>"
+				html+=      	"<td>"+result[i].content+"</td>"  
+				html+=      	"<td>"+result[i].writer+"</td>"  
+				html+=      	"<td><button class='btn btn-warning' onclick=deletePost('"+result[i].ano+"')>삭제</button></td>" 
+				html+=          "<td><button type='button' class='btn btn-primary' id='openModalBtn' onclick='updateDetailPost(" +result[i].ano + "," + "\""+result[i].title+ "\""+ "," + "\""+result[i].content+ "\"" + "," + "\""+result[i].writer+ "\"" + ");'>수정</button></td>" 
+				html+=      	"<td><button class='btn btn-success' onclick=detailPost('"+result[i].ano+"')>보기</button></td>" 
+				html+=		"</tr>"  
+				}
+			 	html+=	"</tbody>"
+			 	html+= "</table>" 
+				}else{
+					html+="<p>데이터가 없습니다.</p>"
+				}
+		  	$("#list").html(html);
+	    },
+	    error : function(request, status, error) { 
+	        console.log(error)
+	    }
+	})
+}
+
+function deletePost(ano){
+	
+	$.ajax({
+	    type : 'delete',           
+	    url : '/delete',          
+	    dataType : 'text',      
+	    data : JSON.stringify({  
+	      "ano" : ano
+	    }),
+	    contentType: 'application/json',
+	    success : function(result) { 
+	    	listPost()
+	    },
+	    error : function(request, status, error) {
+	        console.log(error)
+	    }
+	}) 
+}
+
+
+function detailPost(ano){
+	$.ajax({
+	    type : 'get',          
+	    url : '/detail',     
+	    data : { 
+		      "ano" : ano
+	    },
+	    success : function(result) {  
+	    	var html="";
+	    	$("#staticBackdrop2").modal("show")
+	    	html+= "<p >번호 : "+result.ano+"</p>"
+	    	html+= "<p >제목 : "+result.title+"</p>"
+	    	html+= "<p>내용  : "+result.content+"</p>"
+	    	html+= "<p>작성자 :"+result.writer+"</p>"
+	     	$("#detail").html(html);
+	    	listComment()
+	    	gbl_ano=result.ano
+	    },
+	    error : function(request, status, error) { 
+	        console.log(error)
+	    }
+	})
+}
+
+function updateDetailPost(ano,title,content,writer){
+	$("#staticBackdrop").modal("show");
+	$("#upd_ano").val(ano);
+	$("#upd_title").val(title);
+	$("#upd_content").val(content);
+	$("#upd_writer").val(writer);
+	
+	$('#change').click(function(){
+		updatePost(ano)
+	});
+}
+
+function updatePost(ano){
+		$.ajax({
+		    type : 'post',           
+		    url : '/update',           
+		    data : {  
+		      "ano"     : $("#upd_ano").val(),
+		      "title"   : $("#upd_title").val(),
+		      "content" : $("#upd_content").val(),
+		      "writer"  : $("#upd_writer").val()
+		    },
+		    success : function(result) { 
+		    	$("#staticBackdrop").modal("hide");
+		    	 listPost()
+		    },
+		    error : function(request, status, error) { 
+		        console.log(error)
+		    }
+		})
+}
+
+function listComment(){
+	$.ajax({
+	    type : 'get',          
+	    url : '/comment/list',    
+	    success : function(result) {   
+				var html="";
+				html+=	"<table class='table'>";
+				html+=	"<thead>" 
+				html+=	    "<tr>"
+				html+=	      "<th scope='col'>댓글번호</th>"
+				html+=	      "<th scope='col'>Content</th>"
+				html+=	      "<th scope='col'>Writer</th>"
+				html+=	      "<th scope='col'>수정</th>"
+				html+=	      "<th scope='col'>삭제</th>"
+				html+=	    "</tr>"
+				html+=	"</thead>" 
+				html+=	"<tbody>" 
+				html+=		"<tr>" 
+				for(var i=1 in result){  
+				html+=	 		"<th scope='row'>"+result[i].cno+"</th>"
+				html+=      	"<td>"+result[i].content+"</td>"  
+				html+=      	"<td>"+result[i].writer+"</td>"  
+				html+=          "<td><button type='button' class='btn btn-primary' id='openModalBtn' onclick='updateDetailComment(" +result[i].cno + "," + result[i].ano + "," + "\""+result[i].writer+ "\""+ "," + "\""+result[i].content+ "\"" +  ");'>수정</button></td>" 
+				html+=          "<td><button type='button' class='btn btn-warning' id='openModalBtn' onclick='deleteComment(" +result[i].cno + ");'>삭제</button></td>" 
+				html+=		"</tr>"  
+				}
+			 	html+=	"</tbody>"
+			 	html+= "</table>" 
+		  	$("#commentList").html(html); 
+	    },
+	    error : function(request, status, error) {
+	        console.log(error)
+	    }
+	})
+}
+
+function saveComment(){
+	var content  = $("#comment_content").val();
+	var writer  = $("#comment_writer").val();
+	
+	$.ajax({
+	    type : 'post',           
+	    url : '/comment/create',           
+	    dataType : 'text',  
+	    data : JSON.stringify({  
+	      "ano"     : gbl_ano,
+	      "content" : content,
+	      "writer" 	: '작성자'
+	    }),
+	    contentType: 'application/json',
+	    success : function(result) { 
+	    	 listComment()
+	    	 $("#comment_content").val('')
+	    },
+	    error : function(request, status, error) { 
+	        console.log(error)
+	    }
+	})
+}
+
+function updateDetailComment(cno,ano,content,writer){
+	
+	$("#comment_upd_content").val(content);
+	$("#comment_upd_writer").val(writer);
+	$("#comment_upd_ano").val(ano);
+	$("#comment_upd_cno").val(cno);
+	$("#commentStaticBackdrop").modal("show");
+	$('#comment_change').click(function(){
+		updateComment(cno,ano)
+	});
+}
+
+function updateComment(cno,ano){
+	$.ajax({
+	    type : 'post',           
+	    url : '/comment/update',           
+	    data : {  
+	      "ano"     : 	$("#comment_upd_ano").val(), 
+	      "cno"     : 	$("#comment_upd_cno").val(),
+	      "content" : 	$("#comment_upd_content").val(),
+	      "writer"  :	$("#comment_upd_writer").val()
+	    },
+	    success : function(result) { 
+	    	$("#commentStaticBackdrop").modal("hide")
+	    	listComment()
+	    },
+	    error : function(request, status, error) { 
+	        console.log(error)
+	    }
+	})
+}
+
+function deleteComment(cno){
+	$.ajax({
+	    type : 'delete',           
+	    url : '/comment/delete',           
+	    data : {  
+	      "cno"     : 	cno,
+	    },
+	    success : function(result) { 
+	    	listComment()
+	    },
+	    error : function(request, status, error) { 
+	        console.log(error)
+	    }
+	})
+}
+</script>
+</body>
+</html>
+
